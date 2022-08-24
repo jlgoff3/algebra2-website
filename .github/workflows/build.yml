@@ -9,6 +9,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    inputs:
+      path:
+        description: "Path of the directory containing the static assets."
+        required: true
+        default: "_site/"
+      retention-days:
+        description: "Duration after which artifact will expire in days."
+        required: false
+        default: "1"
+
     strategy:
       matrix:
         node-version: [16.x]
@@ -26,34 +36,27 @@ jobs:
           npm ci
           npm run build
 
-  upload:
-    needs: build
-    inputs:
-      path:
-        description: "Path of the directory containing the static assets."
-        required: true
-        default: "_site/"
-      retention-days:
-        description: "Duration after which artifact will expire in days."
-        required: false
-        default: "1"
-    runs:
-      using: composite
-      steps:
-        - name: Archive artifact
-          shell: bash
-          if: runner.os == 'Linux'
-          run: |
-            tar \
-              --dereference --hard-dereference \
-              --directory ${{ inputs.path }} \
-              -cvf ${{ runner.temp }}/artifact.tar \
-              --exclude=.git \
-              --exclude=.github \
-              .
+      - name: Archive artifact
+        shell: bash
+        if: runner.os == 'Linux'
+        run: |
+          tar \
+            --dereference --hard-dereference \
+            --directory ${{ inputs.path }} \
+            -cvf ${{ runner.temp }}/artifact.tar \
+            --exclude=.git \
+            --exclude=.github \
+            .
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: ${{ inputs.retention-days }}
 
   deploy:
-    needs: upload
+    needs: build
 
     permissions:
       pages: write
