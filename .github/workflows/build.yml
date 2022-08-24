@@ -9,16 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    inputs:
-      path:
-        description: "Path of the directory containing the static assets."
-        required: true
-        default: "_site/"
-      retention-days:
-        description: "Duration after which artifact will expire in days."
-        required: false
-        default: "1"
-
     strategy:
       matrix:
         node-version: [16.x]
@@ -42,7 +32,7 @@ jobs:
         run: |
           tar \
             --dereference --hard-dereference \
-            --directory ${{ inputs.path }} \
+            --directory _site/ \
             -cvf ${{ runner.temp }}/artifact.tar \
             --exclude=.git \
             --exclude=.github \
@@ -53,7 +43,7 @@ jobs:
         with:
           name: github-pages
           path: ${{ runner.temp }}/artifact.tar
-          retention-days: ${{ inputs.retention-days }}
+          retention-days: 1
 
   deploy:
     needs: build
