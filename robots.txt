@@ -5,4 +5,4 @@ User-agent: Baiduspider-image
 Disallow: /
 
 User-agent: *
-Sitemap: https://eleventy-not-so-minimal-blog-starter.netlify.app/sitemap.xml
+Sitemap: https://a2.jlg3.me/sitemap.xml
