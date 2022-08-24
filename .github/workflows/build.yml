@@ -4,14 +4,14 @@ on:
   push:
     branches:
       - main
-      
+
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [16.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -24,10 +24,47 @@ jobs:
       - name: Install dependencies & build
         run: |
           npm ci
-          npm run build          
+          npm run build
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          publish_dir: ./_site
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+  upload:
+    needs: build
+    inputs:
+      path:
+        description: "Path of the directory containing the static assets."
+        required: true
+        default: "_site/"
+      retention-days:
+        description: "Duration after which artifact will expire in days."
+        required: false
+        default: "1"
+    runs:
+      using: composite
+      steps:
+        - name: Archive artifact
+          shell: bash
+          if: runner.os == 'Linux'
+          run: |
+            tar \
+              --dereference --hard-dereference \
+              --directory ${{ inputs.path }} \
+              -cvf ${{ runner.temp }}/artifact.tar \
+              --exclude=.git \
+              --exclude=.github \
+              .
+
+  deploy:
+    needs: upload
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Github Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
