@@ -2,11 +2,11 @@
   "title": "MTH 308",
   "url": "https://a2.jlg3.me",
   "language": "en",
-  "description": "Build your own website + blog with the 'not so minimal blog starter' which uses the Eleventy static site generator.",
+  "description": "The class website for MGLVA's MTH308 course.",
   "author": {
-    "name": "firstname lastname",
-    "email": "hello@blog.com"
+    "name": "Jay Goff",
+    "email": "jgoff@k12.com"
   },
   "image": "/assets/social-image.jpg",
-  "feedUrl": "https://eleventy-not-so-minimal-blog-starter.netlify.app/feed.xml"
+  "feedUrl": "https://a2.jlg3.me/feed.xml"
 }

@@ -5,25 +5,14 @@ eleventyNavigation:
   order: 1
 ---
 
-# Welcome
-This starter will help you build a relatively simple blog with a few key features, while using the Eleventy static site generator.
+# Welcome!
 
-This eleventy starter already includes:
-- Basic site navigation with eleventy-navigation
-- Blog categories & category based navigation
-- Image optimisation with Eleventy-img
-- SVG icons with svg-icon-sprite
-- SEO (sitemap, metadata, robots.txt)
-- RSS feed
-- Luxon for handling dates & times
-- A few basic Eleventy configurations, filters and shortcodes
-- Nunjucks templates
-- Sass & the necessary scripts to compile Sass
+This is the class page for MGLVA's MTH308 Algebra 2 course. Here you can find the the Notebook and Week at a Glance below, as well as read any [Announcements](/blog), learn more [About the course and your teachers (And how to contact us)](/about), and get your questions answered in the [Frequently Asked Questions](/faq).
 
-<br>
+## Notebook
 
-You can find the <a href="https://github.com/Mangamaui/eleventy-not-so-minimal-blog-starter" target="_blank">source code on GitHub</a>.
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSRL-kx1X0njLXEdxB0jx_200YADPlsLNfBhWWpIwSZbyCdf4rs0CqD2qULjGGM07VmoY9r5IczNHwX/pubhtml?widget=true&amp;headers=false" width="960" height="400"></iframe>
 
-<br><br>
+## Schedule
 
-If the listed setup is not what you require, you might want to check out one of the many other Eleveny starters, which can be found here: [Eleventy Starter Projects](https://www.11ty.dev/docs/starter/).
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRvlt1_ntSO3dT-1ntr_OndEtEKqkp81sPStieLbw8kO1R3xWnDsTS7FrnNJzrfDHKs1UL1b_mXqy3r/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
