@@ -68,6 +68,10 @@ p {
   + p {
     margin-top: 1.5rem;
   }
+
+  strong {
+    color: $accent-shade
+  }
 }
 
 nav {
