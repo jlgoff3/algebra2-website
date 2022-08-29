@@ -9,7 +9,7 @@ eleventyNavigation:
 
 ## The Class (Algebra 2)
 
-Welcome to Algebra 2, or MTH308 if you sounding like you're on a top secret government mission. This semester, we'll be learning a lot of things, including **factoring polynomials, solving quadratic functions, radical and rational expressions, complex numbers, systems of equations**, and more!
+Welcome to Algebra 2 (also called MTH308 if you want to sound like you're on a top secret government mission). This semester, we'll be learning a lot of things, including **factoring polynomials, solving quadratic functions, radical and rational expressions, complex numbers, systems of equations**, and more!
 
 Some things to do for class:
 
