@@ -3,10 +3,12 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 const {
   fortawesomeFreeRegularPlugin,
 } = require("@vidhill/fortawesome-free-regular-11ty-shortcode");
+const mathjaxPlugin = require("eleventy-plugin-mathjax");
 
 const { DateTime } = require("luxon");
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addPlugin(mathjaxPlugin);
   eleventyConfig.addPlugin(fortawesomeFreeRegularPlugin);
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(pluginRss);
