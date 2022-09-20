@@ -13,12 +13,18 @@ Because our quizzes and tests are mostly computer-graded, it's important that yo
 
 ### General Tips
 - No spaces. No spaces. No spaces! (If I say it three times, maybe it will come true)
-- Use the carat symbol (^) to represent exponents (example, $ x^2 $ would be typed as x^2). You can type this on your keyboard by pressing Shift+6.
 - Use the correct variable when typing answers (don't use 'x' if the problem used 'y')
+- Don't use 'x' for multiplication. For example, when factoring a quadratic trinomial, you would type the answer as (x+3)(x-4), **not** (x+3)x(x-4).
 - ALWAYS DOUBLE CHECK YOUR GRADED QUIZ!
 - If you feel that you were marked wrong but SHOULD have been marked correct, send an email to your teacher.
-- Don't use 'x' for multiplication. For example, when factoring a quadratic trinomial, you would type the answer as (x+3)(x-4), **not** (x+3)x(x-4).
+- When reviewing quizzes and tests, you may notice that the computer will give answers with an extra set of parentheses. This is so it can show if there are multiple answers. For example, the computer may show an answer as ((x-3)(x+4),(x+4)(x-3)). This is just to show two possible variations of the answer. Your final answer should be typed either (x-3)(x+4) or (x+4)(x-3), depending on which order you put it in.
+- When typing math, the minus sign and the negative sign will both be the same symbol: -
+### Exponents and roots
+- Use the carat symbol (^) to represent exponents (example, $ x^2 $ would be typed as x^2). You can type this on your keyboard by pressing Shift+6.
 - When typing square roots, use sqrt for the symbol and put the radicand in parentheses. For example, $ \sqrt{2x+3} $ would be typed as sqrt(2x+3).
+### Fractions
+- When typing fractions, simply lay them sideways. For example, $ -\frac{2}{3} $ would be typed as -2/3.
+- Unless the problem otherwise specifies, do not convert fractions to decimals. Leave them as fractions, even if they are "improper" fractions.
 
 
 ## Why did my grade drop?
