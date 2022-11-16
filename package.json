@@ -31,6 +31,8 @@
     "svg-icon-sprite": "^1.1.1"
   },
   "devDependencies": {
-    "eleventy-plugin-mathjax": "^2.0.4"
+    "eleventy-plugin-mathjax": "^2.0.4",
+    "markdown-it-anchor": "^8.6.5",
+    "slugify": "^1.6.5"
   }
 }

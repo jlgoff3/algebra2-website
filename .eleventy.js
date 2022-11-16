@@ -4,10 +4,57 @@ const {
   fortawesomeFreeRegularPlugin,
 } = require("@vidhill/fortawesome-free-regular-11ty-shortcode");
 const mathjaxPlugin = require("eleventy-plugin-mathjax");
+const markdownIt = require("markdown-it");
+const markdownItAnchor = require("markdown-it-anchor");
+const slugify = require("slugify");
 
 const { DateTime } = require("luxon");
 
+const linkAfterHeader = markdownItAnchor.permalink.linkAfterHeader({
+  class: "anchor",
+  symbol: "<span hidden>#</span>",
+  style: "aria-labelledby",
+});
+
+const markdownItAnchorOptions = {
+  level: [1, 2, 3],
+  slugify: (str) =>
+    slugify(str, {
+      lower: true,
+      strict: true,
+      remove: /["]/g,
+    }),
+  tabIndex: false,
+  permalink(slug, opts, state, idx) {
+    state.tokens.splice(
+      idx,
+      0,
+      Object.assign(new state.Token("div_open", "div", 1), {
+        // Add class "header-wrapper [h1 or h2 or h3]"
+        attrs: [["class", `heading-wrapper ${state.tokens[idx].tag}`]],
+        block: true,
+      })
+    );
+
+    state.tokens.splice(
+      idx + 4,
+      0,
+      Object.assign(new state.Token("div_close", "div", -1), {
+        block: true,
+      })
+    );
+
+    linkAfterHeader(slug, opts, state, idx + 1);
+  },
+};
+
+/* Markdown Overrides */
+let markdownLibrary = markdownIt({
+  html: true,
+}).use(markdownItAnchor, markdownItAnchorOptions);
+
 module.exports = function (eleventyConfig) {
+  eleventyConfig.setLibrary("md", markdownLibrary);
   eleventyConfig.addPlugin(mathjaxPlugin);
   eleventyConfig.addPlugin(fortawesomeFreeRegularPlugin);
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
@@ -35,6 +82,18 @@ module.exports = function (eleventyConfig) {
     })
       .setLocale("en")
       .toLocaleString(DateTime.DATE_FULL);
+  });
+
+  eleventyConfig.addFilter("slug", (str) => {
+    if (!str) {
+      return;
+    }
+
+    return slugify(str, {
+      lower: true,
+      strict: true,
+      remove: /["]/g,
+    });
   });
 
   /* Creating a collection of blogposts by filtering based on folder and filetype */
