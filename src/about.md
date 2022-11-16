@@ -27,24 +27,24 @@ Some things to do for class:
 Welcome! My name is Mrs. Vetter. I will be your Algebra II teacher for the semester. I live in Southeast Michigan with my husband, five year-old boy, and twin three year-old girls. We have a dog named Samson. When I'm not working, I love to run, go camping, and traveling. I have taught online for 7 years. I also taught in North Carolina for 6 years before that. I graduated from Eastern Michigan and grew up in SE MI. I am very excited to get to know you and have a successful semester!
 
 <p>
-<svg-icon
+<!-- <svg-icon
     src="/assets/sprite.svg#phone"
     width="16px"
     viewBox="0 0 16 16"
     aria-hidden="true"
     focusable="false"
-></svg-icon>
-248-662-5166
+></svg-icon> -->
+<a href="sms:248-662-5166">248-662-5166</a>
 </p>
 <p>
-<svg-icon
+<!-- <svg-icon
     src="/assets/sprite.svg#envelope"
     width="16px"
     viewBox="0 0 16 16"
     aria-hidden="true"
     focusable="false"
-></svg-icon>
-evetter@mglva.org
+></svg-icon> -->
+<a href="mailto:evetter@mglva.org">evetter@mglva.org</a>
 </p>
 
 ### Mr. Goff
@@ -54,22 +54,22 @@ evetter@mglva.org
 My name is Mr. Goff, and I teach math.
 
 <p>
-<svg-icon
+<!-- <svg-icon
     src="/assets/sprite.svg#phone"
     width="16px"
     viewBox="0 0 16 16"
     aria-hidden="true"
     focusable="false"
-></svg-icon>
-xxx-xxxx
+></svg-icon> -->
+<a href="sms:989-272-1595">989-272-1595</a>
 </p>
 <p>
-<svg-icon
+<!-- <svg-icon
     src="/assets/sprite.svg#envelope"
     width="16px"
     viewBox="0 0 16 16"
     aria-hidden="true"
     focusable="false"
-></svg-icon>
-jgoff@mglva.org
+></svg-icon> -->
+<a href="mailto:jgoff@mglva.org">jgoff@mglva.org</a>
 </p>

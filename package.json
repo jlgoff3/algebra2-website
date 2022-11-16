@@ -14,9 +14,9 @@
     "debug": "DEBUG=* npx eleventy"
   },
   "author": {
-    "name": "Claudia Reynders",
-    "email": "hello-claudia@mangamaui.com",
-    "url": "https://mangamaui.com"
+    "name": "Jay Goff",
+    "email": "jameslgoff3@gmail.com",
+    "url": "https://jlg3.me"
   },
   "license": "MIT",
   "dependencies": {
