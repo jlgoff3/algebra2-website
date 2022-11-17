@@ -13,6 +13,7 @@ eleventyNavigation:
     - [Computer Grading](#computer-grading)
     - [Exponents and roots](#exponents-and-roots)
     - [Fractions](#fractions)
+    - [Exponentials](#exponentials)
   - [Why did my grade drop?](#why-did-my-grade-drop)
   - [How is my grade calculated?](#how-is-my-grade-calculated)
   - [What are the rubrics used in this class?](#what-are-the-rubrics-used-in-this-class)
@@ -37,6 +38,9 @@ Because our quizzes and tests are mostly computer-graded, it's important that yo
 ### Fractions
 - When typing fractions, simply lay them sideways. For example, $ -\frac{2}{3} $ would be typed as -2/3.
 - Unless the problem otherwise specifies, do not convert fractions to decimals. Leave them as fractions, even if they are "improper" fractions.
+### Exponentials
+- When typing expoentials with transformations happening in the exponent, put parentheses around everything in the exponent.
+- If your answer is $ 2^{3x-1}+5 $, you would type your answer as 2^(3x-1)+5, to clarify what is in the exponent vs what is not.
 
 ## Why did my grade drop?
 
