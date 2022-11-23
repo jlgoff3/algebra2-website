@@ -5,6 +5,10 @@ eleventyNavigation:
   order: 1
 ---
 
+# IMPORTANT CHOICE BOARD
+
+You can find the choice board game of the century here - [3.3 Choice Board](/assets/choice_board_game.pptx)
+
 # Welcome!
 
 This is the class page for MGLVA's MTH308 Algebra 2 course. Here you can find the the Notebook and Week at a Glance below, as well as read any [Announcements](/blog), learn more [About the course and your teachers (And how to contact us)](/about), and get your questions answered in the [Frequently Asked Questions](/faq).

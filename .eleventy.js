@@ -70,6 +70,7 @@ module.exports = function (eleventyConfig) {
       "assets/svg-icon-sprite.js",
   });
   eleventyConfig.addPassthroughCopy("./src/assets/social-image.jpg");
+  eleventyConfig.addPassthroughCopy("./src/assets/choice_board_game.pptx")
 
   eleventyConfig.addNunjucksAsyncShortcode(
     "image",
