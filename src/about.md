@@ -49,7 +49,7 @@ Welcome! My name is Mrs. Vetter. I will be your Algebra II teacher for the semes
 
 ### Mr. Goff
 
-{% image "src/assets/mr_goff.jpg", "Mr. Goff", "image", [300, 300] %}
+{% image "src/assets/swan_princess.png", "Mr. Goff", "image", [300, 300] %}
 
 My name is Mr. Goff, and I teach math.
 
