@@ -17,6 +17,7 @@ eleventyNavigation:
   - [Why did my grade drop?](#why-did-my-grade-drop)
   - [How is my grade calculated?](#how-is-my-grade-calculated)
   - [What are the rubrics used in this class?](#what-are-the-rubrics-used-in-this-class)
+  - [What resources can I use for this class?](#what-resources-can-i-use-for-this-class)
 
 ## How do I type math for the quizzes and tests?
 
@@ -59,3 +60,8 @@ The **SBG scale** means that you won't see percentages in your gradebook, like a
 Quizzes and tests are both graded with the following rubric: [Quizzes and Tests](https://docs.google.com/document/d/1QaCUXfRbc79vPHXj529y_8ODSwO231aziewdPndzuEM/edit?usp=sharing)
 
 Choice Boards are graded using the following rubric, which can also be found in the OHS: [Choice Boards](https://docs.google.com/document/d/12zhZw3zqikMRYHgt1fOng_Cey6BzHLL1GJw9BgYcskk/edit?usp=sharing)
+
+## What resources can I use for this class?
+
+You are allowed to use anything on this website and anything Mrs. Vetter or Mr. Goff give you in class while taking quizzes, taking tests, or working on choice boards.
+Regarding the use of Photomath and other step-by-step solvers, please see this very helpful website - [Can I Use Photomath?](https://caniusephotomath.com/)
