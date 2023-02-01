@@ -57,7 +57,7 @@ const GradeCalculator = () => {
         <h5 className="text-lg">
           SBG {finalSBG} ({formattedFinalGrade}), which is
           <strong className={passing ? '!text-green-600' : '!text-red-600'}>
-            {passing ? 'passing' : 'failing'}
+            {passing ? ' passing' : ' failing'}
           </strong>
           .
         </h5>
