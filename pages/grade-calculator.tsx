@@ -46,7 +46,7 @@ const GradeCalculator = () => {
   const finalGrade = calculateGrades(grades)
   const formattedFinalGrade = formatGrade(finalGrade)
   const finalSBG = finalGradeSBG(finalGrade)
-  const passing = finalGrade >= .6
+  const passing = finalGrade >= 0.6
   return (
     <div>
       <h1>Final Grade Calculator</h1>
@@ -55,7 +55,11 @@ const GradeCalculator = () => {
         Based on what you've currently entered, your Expected Final Grade is:
         <br />
         <h5 className="text-lg">
-          SBG {finalSBG} ({formattedFinalGrade}), which is <strong className={passing ? "!text-green-600" : "!text-red-600"}>{passing ? 'passing' : 'failing'}</strong>.
+          SBG {finalSBG} ({formattedFinalGrade}), which is
+          <strong className={passing ? '!text-green-600' : '!text-red-600'}>
+            {passing ? 'passing' : 'failing'}
+          </strong>
+          .
         </h5>
       </p>
       {Object.entries(grades).map(([key, grade]) => (
