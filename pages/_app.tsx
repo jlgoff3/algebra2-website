@@ -13,6 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <ThemeProvider attribute="class" defaultTheme={siteMetadata.theme}>
       <Head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <title>MTH308 Algebra 2</title>
       </Head>
       <LayoutWrapper>
         <Component {...pageProps} />
