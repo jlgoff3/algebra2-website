@@ -11,11 +11,12 @@ const Tutoring = () => {
   return (
     <div>
       <h1>Tutoring Dates</h1>
-      The following dates are when one or both Algebra 2 teachers are scheduled to be at the H.S. Homework Help sessions.
+      The following dates are when one or both Algebra 2 teachers are scheduled to be at the H.S.
+      Homework Help sessions.
       <ul>
         {dates.map(({ date, text }) => (
           <li key={date}>
-          <b>{date}</b> - {text}
+            <b>{date}</b> - {text}
           </li>
         ))}
       </ul>

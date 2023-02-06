@@ -8,7 +8,8 @@ const CutoffDates = () => {
   return (
     <div>
       <h1>Cutoff Dates</h1>
-      The following dates are the final dates to turn in some assignments. At 11:59pm on the given date, the teacher-graded Practice Assignments, Choice Boards, and Work will close.
+      The following dates are the final dates to turn in some assignments. At 11:59pm on the given
+      date, the teacher-graded Practice Assignments, Choice Boards, and Work will close.
       <ul>
         {dates.map(({ date, text }) => (
           <li key={date}>
