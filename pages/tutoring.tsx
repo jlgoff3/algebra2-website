@@ -1,6 +1,6 @@
 const dates = [
-  { date: '2-9-2023', text: 'Mrs. Vetter' },
-  { date: '2-23-2023', text: 'Mr. Goff' },
+  { date: '2-9-2023', text: 'Mr. Goff' },
+  { date: '2-23-2023', text: 'Mrs. Vetter' },
   { date: '3-2-2023', text: 'Mr. Goff' },
   { date: '3-9-2023', text: 'Mrs. Vetter' },
   { date: '5-4-2023', text: 'Mr. Goff' },
