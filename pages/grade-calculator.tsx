@@ -42,8 +42,8 @@ const formatGrade = (rawGrade: number) =>
 
 const finalGradeSBG = (finalGrade: number) => {
   const sortedSBG = Object.entries(SBGtoPercent)
-    .filter(([_, v]) => v !== null)
-    .sort(([_, a], [__, b]) => a - b)
+    .filter(([, v]) => v !== null)
+    .sort(([, a], [, b]) => a - b)
   return 1 /* sortedSBG.find(([_, percent]) => finalGrade <= percent)[0] */
 }
 
@@ -57,8 +57,10 @@ const GradeCalculator = () => {
   return (
     <div>
       <h1>Final Grade Calculator</h1>
-      <p>
+      {/* <p>
         Use the dropdowns below to adjust the grades for your standards and citizenship category. Please note that this calculator is not intended to replace your gradebook or communicating with your teacher. Due to certain factors, the grade calculator below may be around 1% off from your actual final grade, and as such, the calculator should only be used as a tool to help you understand what you need to do to achieve the grade level you desire.
+      </p> */}
+      <p>
         Based on what you've currently entered, your Expected Final Grade is:
         <br />
         <h5 className="text-lg">
