@@ -28,7 +28,7 @@ const ContentSecurityPolicy = `
   media-src 'none';
   connect-src *;
   font-src 'self';
-  frame-src https://docs.google.com
+  frame-src https://docs.google.com https://www.canva.com
 `
 
 const securityHeaders = [
