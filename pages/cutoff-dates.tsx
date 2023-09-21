@@ -1,7 +1,7 @@
 const dates = [
-  { date: '3-24-2023', text: 'Standards 1-3 Practice Assignments, Choice Boards, and Work.' },
-  { date: '5-5-2023', text: 'Standards 4-6 Practice Assignments, Choice Boards, and Work.' },
-  { date: '6-4-2023', text: 'Standards 7-10 Practice Assignments, Choice Boards, and Work.' },
+  { date: '10-13-2023', text: 'Standards 1-3' },
+  { date: '11-10-2023', text: 'Standards 4-6' },
+  { date: '12-13-2023', text: 'Standards 7-9' },
 ]
 
 const CutoffDates = () => {
@@ -13,7 +13,7 @@ const CutoffDates = () => {
       <ul>
         {dates.map(({ date, text }) => (
           <li key={date}>
-            <b>{date}</b> - {text}
+            <b>{date}</b> - {text} Practice Assignments, Choice Boards, and Work.
           </li>
         ))}
       </ul>
