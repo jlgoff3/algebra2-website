@@ -6,7 +6,7 @@ const headerNavLinks = [
     href: '#',
     title: 'Resources',
     children: [
-      { href: '/grade-calculator', title: 'Grade Calculator' },
+      /* { href: '/grade-calculator', title: 'Grade Calculator' }, */
       /* { href: '/mth308a', title: 'Algebra 2A' }, */
       { href: '/cutoff-dates', title: 'Cutoff Dates' },
       { href: '/tutoring', title: 'Tutoring Dates' },

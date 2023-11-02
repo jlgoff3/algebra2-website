@@ -4,7 +4,7 @@ const dates = [
   { date: '10-26-2023', text: 'Mr. Goff' },
   { date: '11-9-2023', text: 'Mrs. Vetter' },
   { date: '11-30-2023', text: 'Mr. Goff' },
-  { date: '12-14-2023', text: 'Mrs. Vetter' },
+  { date: '12-7-2023', text: 'Mrs. Vetter' },
 ]
 
 const Tutoring = () => {
