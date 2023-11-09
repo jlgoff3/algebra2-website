@@ -71,9 +71,8 @@ const GradeCalculator = () => {
   const [citizenship, setCitizenship] = useState(SemesterA_Citizenship)
   const updateGrade = (e, key) =>
     setGrades(grades.map((v, i) => (i != key ? v : { ...v, val: Number(e.target.value) })))
-  // TODO: Sanity check for numbers
   const updateCitizenship = (e, type) =>
-    setCitizenship({ ...citizenship, [type]: Number(e.target.value) })
+    setCitizenship({ ...citizenship, [type]: e.target.value })
   const finalGrade = calculateGrades(grades, citizenship)
   const formattedFinalGrade = formatGrade(finalGrade)
   const finalSBG = finalGradeSBG(finalGrade)
@@ -81,11 +80,11 @@ const GradeCalculator = () => {
   return (
     <div>
       <h1>Final Grade Calculator</h1>
-      {/* <p>
-        Use the dropdowns below to adjust the grades for your standards and citizenship category. Please note that this calculator is not intended to replace your gradebook or communicating with your teacher. Due to certain factors, the grade calculator below may be around 1% off from your actual final grade, and as such, the calculator should only be used as a tool to help you understand what you need to do to achieve the grade level you desire.
-      </p> */}
       <p>
-        Based on what you've currently entered, your Expected Final Grade is:
+        Use the dropdowns below to adjust the grades for your standards and citizenship category. Please note that this calculator is not intended to replace your gradebook or communicating with your teacher. Due to certain factors, the grade calculator below may be around 1% off from your actual final grade, and as such, the calculator should only be used as a tool to help you understand what you need to do to achieve the grade level you desire.
+      </p>
+      <p>
+        Based on what you've currently entered, your Expected Grade is:
         <br />
         <h5 className="text-lg">
           SBG {finalSBG} ({formattedFinalGrade}), which is
@@ -118,6 +117,7 @@ const GradeCalculator = () => {
       ))}
       <div className="my-2">
         <input
+          type="number"
           id="citizenship-points"
           value={citizenship.val}
           onChange={(e) => updateCitizenship(e, 'val')}
@@ -128,6 +128,7 @@ const GradeCalculator = () => {
       </div>
       <div className="my-2">
         <input
+          type='number'
           id="citizenship-total"
           value={citizenship.max}
           onChange={(e) => updateCitizenship(e, 'max')}
