@@ -63,7 +63,8 @@ const finalGradeSBG = (finalGrade: number) => {
   const sortedSBG = Object.entries(SBGtoPercent)
     .filter(([, v]) => v !== null)
     .sort(([, a], [, b]) => a - b)
-  return sortedSBG.find(([_, percent]) => finalGrade <= percent)[0]
+  const foundSBG = sortedSBG.find(([_, percent]) => finalGrade <= percent)
+  return foundSBG?.[0] ?? 'N/A'
 }
 
 const GradeCalculator = () => {
@@ -71,8 +72,7 @@ const GradeCalculator = () => {
   const [citizenship, setCitizenship] = useState(SemesterA_Citizenship)
   const updateGrade = (e, key) =>
     setGrades(grades.map((v, i) => (i != key ? v : { ...v, val: Number(e.target.value) })))
-  const updateCitizenship = (e, type) =>
-    setCitizenship({ ...citizenship, [type]: e.target.value })
+  const updateCitizenship = (e, type) => setCitizenship({ ...citizenship, [type]: e.target.value })
   const finalGrade = calculateGrades(grades, citizenship)
   const formattedFinalGrade = formatGrade(finalGrade)
   const finalSBG = finalGradeSBG(finalGrade)
@@ -81,7 +81,11 @@ const GradeCalculator = () => {
     <div>
       <h1>Final Grade Calculator</h1>
       <p>
-        Use the dropdowns below to adjust the grades for your standards and citizenship category. Please note that this calculator is not intended to replace your gradebook or communicating with your teacher. Due to certain factors, the grade calculator below may be around 1% off from your actual final grade, and as such, the calculator should only be used as a tool to help you understand what you need to do to achieve the grade level you desire.
+        Use the dropdowns below to adjust the grades for your standards and citizenship category.
+        Please note that this calculator is not intended to replace your gradebook or communicating
+        with your teacher. Due to certain factors, the grade calculator below may be around 1% off
+        from your actual final grade, and as such, the calculator should only be used as a tool to
+        help you understand what you need to do to achieve the grade level you desire.
       </p>
       <p>
         Based on what you've currently entered, your Expected Grade is:
@@ -118,9 +122,12 @@ const GradeCalculator = () => {
       <div className="my-2">
         <input
           type="number"
+          size={4}
+          max={citizenship.max}
           id="citizenship-points"
           value={citizenship.val}
           onChange={(e) => updateCitizenship(e, 'val')}
+          className="text-gray-900"
         />
         <label htmlFor="citizenship-points" className="ml-5">
           Citizenship Points
@@ -128,13 +135,15 @@ const GradeCalculator = () => {
       </div>
       <div className="my-2">
         <input
-          type='number'
+          type="number"
+          size={4}
           id="citizenship-total"
           value={citizenship.max}
           onChange={(e) => updateCitizenship(e, 'max')}
+          className="text-gray-900"
         />
         <label htmlFor="citizenship-total" className="ml-5">
-          Total Points
+          Total Citizenship Points
         </label>
       </div>
     </div>
