@@ -3,8 +3,18 @@ import { useState } from 'react'
 const STANDARD_PERCENT = 0.095
 const CITIZENSHIP_PERCENT = 0.05
 
+enum SBG {
+  'N/A' = -1,
+  '0 - No Evidence' = 0,
+  '.5 - Limited Evidence' = 0.25,
+  '1 - Beginning' = 0.55,
+  '2 - Approaching' = 0.74,
+  '3 - Proficient' = 0.89,
+  '4 - Excelling' = 1
+}
+
 const SBGtoPercent = {
-  'N/A': null,
+  'N/A': -1,
   '0': 0,
   '0.5': 0.25,
   '1': 0.55,
@@ -13,27 +23,52 @@ const SBGtoPercent = {
   '4': 1,
 }
 
-const defaultGrades = {
-  'Standard 1': 'N/A',
-  'Standard 2': 'N/A',
-  'Standard 3': 'N/A',
-  'Standard 4': 'N/A',
-  'Standard 5': 'N/A',
-  'Standard 6': 'N/A',
-  'Standard 7': 'N/A',
-  'Standard 8': 'N/A',
-  'Standard 9': 'N/A',
-  'Standard 10': 'N/A',
+interface GradeCategory {
+  name: string,
+  weight: number
 }
 
-const calculateGrades = (rawGrades: typeof defaultGrades, citizenship) => {
-  const grades = Object.entries(rawGrades).filter((v) => v !== null)
+interface SBGCategory extends GradeCategory {
+  val: number
+}
+
+interface PointsCategory extends GradeCategory {
+  val: number,
+  max: number
+}
+
+interface Gradebook {
+  standards: SBGCategory[],
+  citizenship: PointsCategory
+}
+
+let SemesterA_Standards: SBGCategory[] = [
+  {
+    name: 'Standard 1',
+    weight: .11,
+    val: -1
+  },
+  ...[...Array(8).keys()].map(v => ({
+    name: `Standard ${v + 2}`,
+    weight: .105,
+    val: -1
+  }))
+]
+
+const SemesterA_Citizenship: PointsCategory = {
+  name: 'Citizenship',
+  val: 5,
+  max: 5,
+  weight: CITIZENSHIP_PERCENT
+}
+
+const calculateGrades = (rawGrades: SBGCategory[], citizenship: PointsCategory) => {
+  const grades = rawGrades.filter(v => v.val != -1)
   const partial =
-    STANDARD_PERCENT * grades.reduce((acc, [_, grade]) => acc + SBGtoPercent[grade], 0) +
-    CITIZENSHIP_PERCENT * citizenship
-  const correction_factor = STANDARD_PERCENT * grades.length + CITIZENSHIP_PERCENT
-  const finalGrade = partial * correction_factor
-  console.log(finalGrade)
+    grades.reduce((acc, { val, weight }) => acc + (val * weight), 0) +
+    CITIZENSHIP_PERCENT * citizenship.val / citizenship.max
+  const correction_factor = grades.reduce((acc, {weight}) => acc + weight, CITIZENSHIP_PERCENT)
+  const finalGrade = partial / correction_factor
   return finalGrade
 }
 
@@ -44,13 +79,16 @@ const finalGradeSBG = (finalGrade: number) => {
   const sortedSBG = Object.entries(SBGtoPercent)
     .filter(([, v]) => v !== null)
     .sort(([, a], [, b]) => a - b)
-  return 1 /* sortedSBG.find(([_, percent]) => finalGrade <= percent)[0] */
+  return sortedSBG.find(([_, percent]) => finalGrade <= percent)[0]
 }
 
 const GradeCalculator = () => {
-  const [grades, setGrades] = useState(defaultGrades)
-  const updateGrade = (e, key) => setGrades({ ...grades, ...{ [key]: e.target.value } })
-  const finalGrade = calculateGrades(grades, 100)
+  const [grades, setGrades] = useState(SemesterA_Standards)
+  const [citizenship, setCitizenship] = useState(SemesterA_Citizenship)
+  const updateGrade = (e, key) => setGrades(grades.map((v, i) => i != key ? v : { ...v, val: Number(e.target.value) }))
+  // TODO: Sanity check for numbers
+  const updateCitizenship = (e, type) => setCitizenship({ ...citizenship, [type]: Number(e.target.value) })
+  const finalGrade = calculateGrades(grades, citizenship)
   const formattedFinalGrade = formatGrade(finalGrade)
   const finalSBG = finalGradeSBG(finalGrade)
   const passing = finalGrade >= 0.6
@@ -71,33 +109,33 @@ const GradeCalculator = () => {
           .
         </h5>
       </p>
-      {Object.entries(grades).map(([key, grade]) => (
-        <div key={key} className="my-2">
+      {grades.map((grade, key) => (
+        <div key={`${grade.name}-div`} className="my-2">
           <select
-            id={key}
-            value={grade}
+            id={`${grade.name}-select`}
+            value={grade.val}
             onChange={(e) => updateGrade(e, key)}
             className="text-gray-900"
           >
-            {Object.keys(SBGtoPercent).map((sbg) => (
-              <option key={key + sbg} value={sbg}>
-                {sbg}
+            {Object.entries(SBGtoPercent).sort(([_, a], [__, b]) => a - b).map(([sbg_name, sbg_value]) => (
+              <option key={grade.name + sbg_name} value={sbg_value}>
+                {sbg_name}
               </option>
             ))}
           </select>
-          <label htmlFor={key} className="ml-5">
-            {key}
+          <label htmlFor={`${grade.name}-select`} className="ml-5">
+            {grade.name}
           </label>
         </div>
       ))}
       <div className="my-2">
-        <input id="citizenship-points" />
+        <input id="citizenship-points" value={citizenship.val} onChange={e => updateCitizenship(e, 'val')} />
         <label htmlFor="citizenship-points" className="ml-5">
           Citizenship Points
         </label>
       </div>
       <div className="my-2">
-        <input id="citizenship-total" />
+        <input id="citizenship-total" value={citizenship.max} onChange={e => updateCitizenship(e, 'max')} />
         <label htmlFor="citizenship-total" className="ml-5">
           Total Points
         </label>
