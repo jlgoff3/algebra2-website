@@ -1,10 +1,10 @@
 const dates = [
-  { date: '9-21-2023', text: 'Mr. Goff' },
-  { date: '10-12-2023', text: 'Mrs. Vetter' },
-  { date: '10-26-2023', text: 'Mr. Goff' },
-  { date: '11-9-2023', text: 'Mrs. Vetter' },
-  { date: '11-30-2023', text: 'Mr. Goff' },
-  { date: '12-7-2023', text: 'Mrs. Vetter' },
+  { date: '2-1-2024', text: 'Mrs. Vetter' },
+  { date: '2-8-2024', text: 'Mr. Goff' },
+  { date: '3-14-2024', text: 'Mr. Goff' },
+  { date: '3-21-2024', text: 'Mrs. Vetter' },
+  { date: '5-9-2024', text: 'Mrs. Vetter' },
+  { date: '5-16-2024', text: 'Mr. Goff' },
 ]
 
 const Tutoring = () => {

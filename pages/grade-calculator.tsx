@@ -1,17 +1,5 @@
 import { useState } from 'react'
 
-const CITIZENSHIP_PERCENT = 0.05
-
-const SBGtoPercent = {
-  'N/A': -1,
-  '0': 0,
-  '0.5': 0.25,
-  '1': 0.55,
-  '2': 0.74,
-  '3': 0.89,
-  '4': 1,
-}
-
 interface GradeCategory {
   name: string
   weight: number
@@ -26,20 +14,35 @@ interface PointsCategory extends GradeCategory {
   max: number
 }
 
-const SemesterA_Standards: SBGCategory[] = [
-  {
-    name: 'Standard 1',
-    weight: 0.11,
-    val: -1,
-  },
-  ...[...Array(8).keys()].map((v) => ({
-    name: `Standard ${v + 2}`,
-    weight: 0.105,
+const CITIZENSHIP_PERCENT = 0.05
+
+const SEMESTER_A = {
+  STANDARDS: 9,
+}
+const SEMESTER_B = {
+  STANDARDS: 10,
+}
+const CURRENT_SEMESTER = SEMESTER_B
+
+const SBGtoPercent = {
+  'N/A': -1,
+  '0': 0,
+  '0.5': 0.25,
+  '1': 0.55,
+  '2': 0.74,
+  '3': 0.89,
+  '4': 1,
+}
+
+const Semester_Standards: SBGCategory[] = [
+  ...[...Array(CURRENT_SEMESTER.STANDARDS).keys()].map((v) => ({
+    name: `Standard ${v + 1}`,
+    weight: 0.95 / CURRENT_SEMESTER.STANDARDS,
     val: -1,
   })),
 ]
 
-const SemesterA_Citizenship: PointsCategory = {
+const Semester_Citizenship: PointsCategory = {
   name: 'Citizenship',
   val: 5,
   max: 5,
@@ -63,13 +66,13 @@ const finalGradeSBG = (finalGrade: number) => {
   const sortedSBG = Object.entries(SBGtoPercent)
     .filter(([, v]) => v !== null)
     .sort(([, a], [, b]) => a - b)
-  const foundSBG = sortedSBG.find(([_, percent]) => finalGrade <= percent)
+  const foundSBG = sortedSBG.find(([_, percent]) => finalGrade <= percent + 0.005)
   return foundSBG?.[0] ?? 'N/A'
 }
 
 const GradeCalculator = () => {
-  const [grades, setGrades] = useState(SemesterA_Standards)
-  const [citizenship, setCitizenship] = useState(SemesterA_Citizenship)
+  const [grades, setGrades] = useState(Semester_Standards)
+  const [citizenship, setCitizenship] = useState(Semester_Citizenship)
   const updateGrade = (e, key) =>
     setGrades(grades.map((v, i) => (i != key ? v : { ...v, val: Number(e.target.value) })))
   const updateCitizenship = (e, type) => setCitizenship({ ...citizenship, [type]: e.target.value })
