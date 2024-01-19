@@ -2,7 +2,6 @@ import { useState } from 'react'
 
 interface GradeCategory {
   name: string
-  weight: number
 }
 
 interface SBGCategory extends GradeCategory {
@@ -13,6 +12,8 @@ interface PointsCategory extends GradeCategory {
   val: number
   max: number
 }
+
+const STANDARDS_PERCENT = 0.95
 
 const CITIZENSHIP_PERCENT = 0.05
 
@@ -37,7 +38,6 @@ const SBGtoPercent = {
 const Semester_Standards: SBGCategory[] = [
   ...[...Array(CURRENT_SEMESTER.STANDARDS).keys()].map((v) => ({
     name: `Standard ${v + 1}`,
-    weight: 0.95 / CURRENT_SEMESTER.STANDARDS,
     val: -1,
   })),
 ]
@@ -46,16 +46,15 @@ const Semester_Citizenship: PointsCategory = {
   name: 'Citizenship',
   val: 5,
   max: 5,
-  weight: CITIZENSHIP_PERCENT,
 }
 
 const calculateGrades = (rawGrades: SBGCategory[], citizenship: PointsCategory) => {
+  const finalCitizenship = (CITIZENSHIP_PERCENT * citizenship.val) / citizenship.max
   const grades = rawGrades.filter((v) => v.val != -1)
-  const partial =
-    grades.reduce((acc, { val, weight }) => acc + val * weight, 0) +
-    (CITIZENSHIP_PERCENT * citizenship.val) / citizenship.max
-  const correction_factor = grades.reduce((acc, { weight }) => acc + weight, CITIZENSHIP_PERCENT)
-  const finalGrade = partial / correction_factor
+  if (!grades.length) return finalCitizenship
+  const finalStandardGrade =
+    (STANDARDS_PERCENT * grades.reduce((acc, { val }) => acc + val, 0)) / grades.length
+  const finalGrade = finalStandardGrade + finalCitizenship
   return finalGrade
 }
 
