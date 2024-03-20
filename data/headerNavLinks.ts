@@ -12,6 +12,7 @@ const headerNavLinks = [
       { href: '/cutoff-dates', title: 'Cutoff Dates' },
       { href: '/tutoring', title: 'Tutoring Dates' },
       { href: '/birthday', title: 'Birthday Song' },
+      { href: '/quotes', title: 'Quotes' },
     ],
   },
 ]
