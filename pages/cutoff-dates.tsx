@@ -1,7 +1,7 @@
 const dates = [
-  { date: '2-23-2024', text: 'Standards 1-3' },
-  { date: '4-19-2024', text: 'Standards 4-6' },
-  { date: '5-26-2024', text: 'Standards 7-10' },
+  { date: '10-11-2024', text: 'Standards 1-3' },
+  { date: '11-08-2024', text: 'Standards 4-6' },
+  { date: '12-12-2024', text: 'Standards 7-10' },
 ]
 
 const CutoffDates = () => {
